@@ -23,7 +23,7 @@ function Signuppage() {
 
     // const apiUrl = import.meta.env.REACT_APP_API_URL;
     const { REACT_APP_API_URL } = process.env;
-    console.log("API URL:", apiUrl);
+   
 
     const handleSignUp = async (e) => {
       e.preventDefault(); // Prevent default form submission
@@ -35,12 +35,8 @@ function Signuppage() {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         console.log('User details are here', user);
-        console.log("API URL:", apiUrl);
+   
 
-           // Check if apiUrl is defined
-        if (!apiUrl) {
-          throw new Error("API URL is not defined");
-      }
          // Make sure apiUrl is correctly concatenated with the endpoint
          const url = `${REACT_APP_API_URL}/users`;
          console.log("Request URL:", url);
