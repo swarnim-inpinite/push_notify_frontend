@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios';
 
-const apiUrl = import.meta.env.REACT_APP_API_URL;
+// const apiUrl = import.meta.env.REACT_APP_API_URL;
+
+const apiUrl = 'https://push-notify-backend.onrender.com'
 
 function CalendarComponent() {
     const [selectedDate, setSelectedDate] = useState(new Date());

@@ -4,8 +4,10 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-const apiUrl = import.meta.env.REACT_APP_API_URL;
-console.log("login api url is", apiUrl);
+// const apiUrl = import.meta.env.REACT_APP_API_URL;
+
+const apiUrl = 'https://push-notify-backend.onrender.com'
+
 
 function Loginpage() {
     const [email, setEmail] = useState('');

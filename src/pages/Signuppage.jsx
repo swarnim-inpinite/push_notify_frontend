@@ -41,8 +41,9 @@ function Signuppage() {
       //     throw new Error("API URL is not defined");
       // }
          // Make sure apiUrl is correctly concatenated with the endpoint
-        //  const url = `${apiUrl}/users`;
-        const url='https://push-notify-backend.onrender.com/users'
+        // const apiUrl = process.env.REACT_APP_API_URL;
+        // const url = `${apiUrl}/users`;
+         const url='https://push-notify-backend.onrender.com/users'
          console.log("Request URL:", url);
         
           // const response = await axios.post(`${apiUrl}/users`, {
