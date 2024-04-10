@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 const apiUrl = process.env.REACT_APP_API_URL;
-console.log("api url is", apiUrl);
+
  
 function Signuppage() {
     const [email, setEmail] = useState('');
@@ -34,16 +34,13 @@ function Signuppage() {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         console.log('User details are', user);
-       
-
-        
           const response = await axios.post(`${apiUrl}/users`, {
           email,
           password,
           uid: user.uid, // Provide the UID (if available)
           pushNotificationToken: token // Provide the push notification token (if available)
       });
-
+      console.log("api url is", apiUrl);
       console.log('User created successfully:', response.data);
       navigate('/login');
 
