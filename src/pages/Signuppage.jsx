@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 const apiUrl = process.env.REACT_APP_API_URL;
+console.log("api url is", apiUrl);
  
 function Signuppage() {
     const [email, setEmail] = useState('');
