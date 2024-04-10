@@ -42,7 +42,7 @@ function Signuppage() {
       // }
          // Make sure apiUrl is correctly concatenated with the endpoint
         //  const url = `${apiUrl}/users`;
-        const url='https://push-notify-backend.onrender.com'
+        const url='https://push-notify-backend.onrender.com/users'
          console.log("Request URL:", url);
         
           // const response = await axios.post(`${apiUrl}/users`, {
