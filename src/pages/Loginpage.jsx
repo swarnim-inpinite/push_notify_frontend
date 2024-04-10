@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const apiUrl = process.env.REACT_APP_API_URL;
+console.log("login api url is", apiUrl);
 
 function Loginpage() {
     const [email, setEmail] = useState('');
