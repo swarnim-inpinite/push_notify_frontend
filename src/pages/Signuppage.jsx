@@ -21,7 +21,8 @@ function Signuppage() {
       setPassword(e.target.value);
     };
 
-    const apiUrl = import.meta.env.REACT_APP_API_URL;
+    // const apiUrl = import.meta.env.REACT_APP_API_URL;
+    const { REACT_APP_API_URL } = process.env;
     console.log("API URL:", apiUrl);
 
     const handleSignUp = async (e) => {
@@ -41,7 +42,7 @@ function Signuppage() {
           throw new Error("API URL is not defined");
       }
          // Make sure apiUrl is correctly concatenated with the endpoint
-         const url = `${apiUrl}/users`;
+         const url = `${REACT_APP_API_URL}/users`;
          console.log("Request URL:", url);
         
           // const response = await axios.post(`${apiUrl}/users`, {
