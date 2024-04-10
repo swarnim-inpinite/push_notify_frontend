@@ -38,7 +38,9 @@ function Signuppage() {
    
 
          // Make sure apiUrl is correctly concatenated with the endpoint
-         const url = `${process.env.REACT_APP_API_URL}/users`;
+         const apiUrl = process.env.REACT_APP_API_URL;
+         console.log("API URL ", process.env.REACT_APP_API_URL);
+         const url = `${apiUrl}/users`;
          console.log("Request URL:", url);
         
           // const response = await axios.post(`${apiUrl}/users`, {
