@@ -21,7 +21,7 @@ function Signuppage() {
       setPassword(e.target.value);
     };
 
-    const apiUrl = process.env.REACT_APP_URL;
+    const apiUrl = import.meta.env.REACT_APP_API_URL;
     console.log("API URL:", apiUrl);
 
     const handleSignUp = async (e) => {
