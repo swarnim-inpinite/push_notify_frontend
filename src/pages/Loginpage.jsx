@@ -4,6 +4,7 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function Loginpage() {
     const [email, setEmail] = useState('');
@@ -29,7 +30,8 @@ function Loginpage() {
         
 
             // After successful login, send a request to fetch other users' information
-             const response = await axios.get('http://localhost:3001/otherUsers', {
+            //  const response = await axios.get('http://localhost:3001/otherUsers', {
+                const response = await axios.get(`${apiUrl}/otherUsers`, {
                 params: { currentUserUID: user.uid }
             });
             console.log('Other users:', response.data);

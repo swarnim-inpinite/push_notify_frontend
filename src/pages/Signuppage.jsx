@@ -6,7 +6,7 @@ import { generatetoken } from '../firebase';
 import axios from 'axios';
 
 
-
+const apiUrl = process.env.REACT_APP_API_URL;
  
 function Signuppage() {
     const [email, setEmail] = useState('');
@@ -35,7 +35,8 @@ function Signuppage() {
         console.log('User details are', user);
        
 
-        const response = await axios.post('http://localhost:3001/users', {
+        
+          const response = await axios.post(`${apiUrl}/users`, {
           email,
           password,
           uid: user.uid, // Provide the UID (if available)
@@ -46,6 +47,7 @@ function Signuppage() {
       navigate('/login');
 
       } catch (error) {
+        console.log(error)
         const errorCode = error.code;
         const errorMessage = error.message;
         setError(errorMessage); // Set error state

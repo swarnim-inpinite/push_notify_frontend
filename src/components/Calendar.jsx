@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function CalendarComponent() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [eventDetails, setEventDetails] = useState({
@@ -28,7 +30,8 @@ function CalendarComponent() {
     const handleEventSubmit = async (e) => {
         e.preventDefault();
         try {
-             const reponse = await axios.post('http://localhost:3001/events', eventDetails);
+            //  const reponse = await axios.post('http://localhost:3001/events', eventDetails);
+            const reponse = await axios.post(`${apiUrl}/events`, eventDetails);
             // Reset event details after submission
             setEventDetails({
                 date: selectedDate.toISOString().split('T')[0], 
