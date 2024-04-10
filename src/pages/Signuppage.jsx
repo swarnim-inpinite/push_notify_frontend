@@ -5,11 +5,6 @@ import { auth } from "../firebase";
 import { generatetoken } from '../firebase';
 import axios from 'axios';
 
-
-
-
-
-
  
 function Signuppage() {
     const [email, setEmail] = useState('');
@@ -26,7 +21,7 @@ function Signuppage() {
       setPassword(e.target.value);
     };
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.REACT_APP_URL;
     console.log("API URL:", apiUrl);
 
     const handleSignUp = async (e) => {
