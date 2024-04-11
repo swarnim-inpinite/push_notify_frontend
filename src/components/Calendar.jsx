@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios';
+import { auth } from '../firebase';
 
 // const apiUrl = import.meta.env.REACT_APP_API_URL;
 
-const apiUrl = 'https://push-notify-backend.onrender.com'
+// const apiUrl = 'https://push-notify-backend.onrender.com'
 
-
+const apiUrl = 'http://localhost:3001'
 
 function CalendarComponent() {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -36,47 +37,21 @@ function CalendarComponent() {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            console.log("user in calendar are", user);
-            // Submit the event details
-            const response = await axios.post(`${apiUrl}/events`, eventDetails);
+            console.log('User logged in successfully:', user);
+            //  const reponse = await axios.post('http://localhost:3001/events', eventDetails);
+            const reponse = await axios.post(`${apiUrl}/events`, eventDetails);
             // Reset event details after submission
             setEventDetails({
                 date: selectedDate.toISOString().split('T')[0], 
                 description: ''
             });
-            console.log("Event added successfully", response.data);
+            console.log("Event added successfully", reponse.data)
             alert('Event added successfully!');
-    
-            // Fetch other users after successful event submission
-           
-            const otherUsersResponse = await axios.get(`${apiUrl}/otherUsers`, {
-                params: { currentUserUID: user.uid }
-            });
-            console.log('Other users:', otherUsersResponse.data);
         } catch (error) {
             console.error('Error adding event:', error);
             alert('Failed to add event. Please try again.');
         }
     };
-    
-
-    // const handleEventSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         //  const reponse = await axios.post('http://localhost:3001/events', eventDetails);
-    //         const reponse = await axios.post(`${apiUrl}/events`, eventDetails);
-    //         // Reset event details after submission
-    //         setEventDetails({
-    //             date: selectedDate.toISOString().split('T')[0], 
-    //             description: ''
-    //         });
-    //         console.log("Event added successfully", reponse.data)
-    //         alert('Event added successfully!');
-    //     } catch (error) {
-    //         console.error('Error adding event:', error);
-    //         alert('Failed to add event. Please try again.');
-    //     }
-    // };
 
     return (
         <div>

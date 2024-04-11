@@ -6,8 +6,9 @@ import axios from 'axios';
 
 // const apiUrl = import.meta.env.REACT_APP_API_URL;
 
-const apiUrl = 'https://push-notify-backend.onrender.com'
+// const apiUrl = 'https://push-notify-backend.onrender.com'
 
+const apiUrl = 'http://localhost:3001'
 
 
 function Loginpage() {
@@ -31,15 +32,14 @@ function Loginpage() {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             console.log('User logged in successfully:', user);
-            navigate('/welcome');
             // After successful login, send a request to fetch other users' information
             //  const response = await axios.get('http://localhost:3001/otherUsers', {
-            //     const response = await axios.get(`${apiUrl}/otherUsers`, {
-            //     params: { currentUserUID: user.uid }
-            // });
-            // console.log('Other users:', response.data);
+                const response = await axios.get(`${apiUrl}/otherUsers`, {
+                params: { currentUserUID: user.uid }
+            });
+            console.log('Other users:', response.data);
             // Now you can use the UID as needed
-            
+            navigate('/welcome');
         } catch (error) {
             const errorMessage = error.message;
             setError(errorMessage);
