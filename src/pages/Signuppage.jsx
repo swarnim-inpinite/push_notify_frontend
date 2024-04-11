@@ -6,6 +6,8 @@ import { generatetoken } from '../firebase';
 import axios from 'axios';
 
 const apiUrl = 'https://push-notify-backend.onrender.com'
+
+
  
 function Signuppage() {
     const [email, setEmail] = useState('');

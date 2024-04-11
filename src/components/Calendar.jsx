@@ -6,6 +6,8 @@ import axios from 'axios';
 
 const apiUrl = 'https://push-notify-backend.onrender.com'
 
+
+
 function CalendarComponent() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [eventDetails, setEventDetails] = useState({
@@ -28,10 +30,13 @@ function CalendarComponent() {
             [name]: value
         });
     };
-    
+
     const handleEventSubmit = async (e) => {
         e.preventDefault();
         try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log("user in calendar are", user);
             // Submit the event details
             const response = await axios.post(`${apiUrl}/events`, eventDetails);
             // Reset event details after submission
@@ -43,8 +48,7 @@ function CalendarComponent() {
             alert('Event added successfully!');
     
             // Fetch other users after successful event submission
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
+           
             const otherUsersResponse = await axios.get(`${apiUrl}/otherUsers`, {
                 params: { currentUserUID: user.uid }
             });
