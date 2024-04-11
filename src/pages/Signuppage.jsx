@@ -5,6 +5,7 @@ import { auth } from "../firebase";
 import { generatetoken } from '../firebase';
 import axios from 'axios';
 
+const apiUrl = 'https://push-notify-backend.onrender.com'
  
 function Signuppage() {
     const [email, setEmail] = useState('');
@@ -21,8 +22,7 @@ function Signuppage() {
       setPassword(e.target.value);
     };
 
-    // const apiUrl = import.meta.env.REACT_APP_API_URL;
-    // console.log("API URL:", apiUrl);
+
 
     const handleSignUp = async (e) => {
       e.preventDefault(); // Prevent default form submission
@@ -34,26 +34,14 @@ function Signuppage() {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         console.log('User details are here', user);
-        // console.log("API URL:", apiUrl);
 
-      //      // Check if apiUrl is defined
-      //   if (!apiUrl) {
-      //     throw new Error("API URL is not defined");
-      // }
-         // Make sure apiUrl is correctly concatenated with the endpoint
-        // const apiUrl = process.env.REACT_APP_API_URL;
-        // const url = `${apiUrl}/users`;
-         const url='https://push-notify-backend.onrender.com/users'
-         console.log("Request URL:", url);
-        
-          // const response = await axios.post(`${apiUrl}/users`, {
-            const response = await axios.post(url, {
-          email,
-          password,
-          uid: user.uid, // Provide the UID (if available)
-          pushNotificationToken: token // Provide the push notification token (if available)
-      });
-      
+        const response = await axios.post(`${apiUrl}/users`, {
+        email,
+        password,
+        uid: user.uid, // Provide the UID (if available)
+        pushNotificationToken: token // Provide the push notification token (if available)
+    });
+    
       console.log('User created successfully:', response.data);
       navigate('/login');
 
