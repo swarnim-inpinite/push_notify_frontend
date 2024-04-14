@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios';
-import { auth } from '../firebase';
 
-// const apiUrl = import.meta.env.REACT_APP_API_URL;
-
-// const apiUrl = 'https://push-notify-backend.onrender.com'
-
-const apiUrl = 'http://localhost:3001'
+const apiUrl = 'http://localhost:3001';
 
 function CalendarComponent() {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -15,6 +10,13 @@ function CalendarComponent() {
         date: selectedDate.toISOString().split('T')[0], 
         description: ''
     });
+    const [userId, setUserId] = useState(null);
+
+    useEffect(() => {
+        // Fetch user ID from local storage or state management solution
+        const userIdFromStorage = localStorage.getItem('userId');
+        setUserId(userIdFromStorage);
+    }, []);
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
@@ -35,17 +37,17 @@ function CalendarComponent() {
     const handleEventSubmit = async (e) => {
         e.preventDefault();
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-            console.log('User logged in successfully:', user);
-            //  const reponse = await axios.post('http://localhost:3001/events', eventDetails);
-            const reponse = await axios.post(`${apiUrl}/events`, eventDetails);
+            
+            const response = await axios.post(`${apiUrl}/events`, {
+                ...eventDetails,
+                userId: userId, // Include the user ID
+            });
             // Reset event details after submission
             setEventDetails({
                 date: selectedDate.toISOString().split('T')[0], 
                 description: ''
             });
-            console.log("Event added successfully", reponse.data)
+            console.log("Event added successfully", response.data)
             alert('Event added successfully!');
         } catch (error) {
             console.error('Error adding event:', error);
