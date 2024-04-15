@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-//const apiUrl = 'https://push-notify-backend.onrender.com'
+const apiUrl = 'https://push-notify-backend.onrender.com'
 
-const apiUrl = "http://localhost:3001";
+//const apiUrl = "http://localhost:3001";
 
 function Loginpage() {
   const [email, setEmail] = useState("");
@@ -39,11 +39,6 @@ function Loginpage() {
       // Set the user ID in local storage
       localStorage.setItem("userId", user.uid);
 
-    //   const response = await axios.get(`${apiUrl}/otherUsers`, {
-    //     params: { currentUserUID: user.uid },
-    //   });
-    //   console.log("Other users:", response.data);
-      // Now you can use the UID as needed
       navigate("/welcome");
     } catch (error) {
       const errorMessage = error.message;
