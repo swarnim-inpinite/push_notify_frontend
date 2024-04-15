@@ -41,8 +41,7 @@ export const generatetoken = async () => {
     const permission = await Notification.requestPermission();
     console.log(permission)
     const token = await getToken(messaging, {
-      // vapidKey: "BCW8vSjo2XIBdp4jhCgyXo-G1FyyNU5snTTIXB6SNqZzQA4lLrKRxI7DiAR4PQG8apJcNo-WVZ5Q7s9OJsqXyVY"
-      vapidKey:import.meta.env.VITE_APP_VAPID_KEY
+      vapidKey: "BCW8vSjo2XIBdp4jhCgyXo-G1FyyNU5snTTIXB6SNqZzQA4lLrKRxI7DiAR4PQG8apJcNo-WVZ5Q7s9OJsqXyVY"
     })
     return token; // Return the token
   } catch(error){
