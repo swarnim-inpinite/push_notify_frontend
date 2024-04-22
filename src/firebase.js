@@ -41,7 +41,7 @@ export const generatetoken = async () => {
     const permission = await Notification.requestPermission();
     console.log(permission)
     const token = await getToken(messaging, {
-      vapidKey: "BCW8vSjo2XIBdp4jhCgyXo-G1FyyNU5snTTIXB6SNqZzQA4lLrKRxI7DiAR4PQG8apJcNo-WVZ5Q7s9OJsqXyVY"
+      vapidKey: "BP-DgHfWYv1jnpmNxSBxV4YWOjAcd2ad_7ubSdnhBV6dPkrz2NW70H7Lf7maa44zW-dmDIPyfyhJSNJ90pQgtoo"
     })
     return token; // Return the token
   } catch(error){
