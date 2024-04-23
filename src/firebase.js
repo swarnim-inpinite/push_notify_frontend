@@ -22,7 +22,19 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app); // Get the auth instance
 const messaging = getMessaging(app) 
 
-
+// Add service worker registration
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/firebase-messaging-sw.js")
+      .then((registration) => {
+        console.log("Firebase Messaging Service Worker Registered:", registration);
+      })
+      .catch((error) => {
+        console.error("Error registering Firebase Messaging Service Worker:", error);
+      });
+  });
+}
 
 export const generatetoken = async () => {
   try {
