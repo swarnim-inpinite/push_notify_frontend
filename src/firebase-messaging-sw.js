@@ -1,7 +1,7 @@
 // firebase-messaging-sw.js
 
 self.addEventListener('push', function(event) {
-  const title = 'New Event Notification';
+  const title = 'New Event Notification Firebase';
   const body = 'A new event has been added!';
   
   const options = {
