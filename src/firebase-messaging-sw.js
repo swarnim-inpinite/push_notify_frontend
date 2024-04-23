@@ -6,7 +6,7 @@ self.addEventListener('push', function(event) {
   
   const options = {
     body: body,
-    icon: 'cal_icon.png', // Update with your actual icon path
+    icon: 'cal_icon.png', 
     badge: 'path/to/badge.png' // Update with your actual badge path
   };
   
