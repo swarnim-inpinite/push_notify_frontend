@@ -1,15 +1,8 @@
-// firebase-messaging-sw.js
-
 self.addEventListener('push', function(event) {
-  console.log('Push event received:', event);
-  const title = 'New Event Notification Firebase';
-  const body = 'A new event has been added!';
-  
   const options = {
-    body: body,
-    icon: 'cal_icon.png', 
-    badge: 'path/to/badge.png' 
+    body: event.data.text(),
+    icon: 'icons/icon-192x192.png', // Update with your actual icon path
+    badge: 'path/to/badge.png' // Update with your actual badge path
   };
-  
-  event.waitUntil(self.registration.showNotification(title, options));
+  event.waitUntil(self.registration.showNotification('Notification', options));
 });
