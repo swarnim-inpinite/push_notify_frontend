@@ -36,6 +36,17 @@ if ("serviceWorker" in navigator) {
   });
 }
 
+
+// Listen for messages
+messaging.onMessage((payload) => {
+  console.log('Message received. ', payload);
+  const { title, body } = payload.notification;
+  self.registration.showNotification(title, {
+      body: body,
+      icon: '/path/to/icon.png' // Specify the path to your notification icon
+  });
+});
+
 export const generatetoken = async () => {
   try {
     const permission = await Notification.requestPermission();
