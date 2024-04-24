@@ -2,8 +2,8 @@ self.addEventListener('push', function(event) {
   console.log('Push event received:', event);
   
   try {
-    console.log("insisde try")
-    const payload = event.data.json(); // Assuming the push payload is in JSON format
+    console.log("inside try")
+    const payload = event.data.json(); 
     console.log("Payload is", payload);
 
     // Ensure that the payload contains a 'notification' object
