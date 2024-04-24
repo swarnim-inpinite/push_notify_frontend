@@ -1,8 +1,10 @@
 self.addEventListener('push', function(event) {
+  const payload = event.data.json(); // Assuming the push payload is in JSON format
+
   const options = {
-    body: event.data.text(),
-    icon: 'icons/icon-192x192.png', // Update with your actual icon path
-    badge: 'path/to/badge.png' // Update with your actual badge path
+    body: payload.body, // Extracting the body from the payload
+    title: payload.title // Extracting the title from the payload
   };
-  event.waitUntil(self.registration.showNotification('Notification', options));
+
+  event.waitUntil(self.registration.showNotification(options.title, options));
 });
