@@ -2,7 +2,9 @@ self.addEventListener('push', function(event) {
   console.log('Push event received:', event);
   
   try {
+    console.log("insisde try")
     const payload = event.data.json(); // Assuming the push payload is in JSON format
+    console.log("Payload is", payload);
 
     // Ensure that the payload contains a 'notification' object
     if (!payload.notification) {
@@ -10,7 +12,9 @@ self.addEventListener('push', function(event) {
     }
 
     const title = payload.notification.title;
+    console.log("title is", title);
     const body = payload.notification.body;
+    console.log("Body is", body);
 
     const options = {
       body: body,
