@@ -41,9 +41,9 @@ if ("serviceWorker" in navigator) {
 export const generatetoken = async () => {
   try {
     const permission = await Notification.requestPermission();
-    console.log(permission)
+    console.log("Permission is",permission)
     const token = await getToken(messaging, {
-      vapidKey: "BP-DgHfWYv1jnpmNxSBxV4YWOjAcd2ad_7ubSdnhBV6dPkrz2NW70H7Lf7maa44zW-dmDIPyfyhJSNJ90pQgtoo"
+      vapidKey: "BEkr4awbBEmxNrJG1UibgRzg8vcoYmKAvkeJIwjgtXBpB06o6Z1JpQs0ivSDGSig74tKpFRxL8a6-5GMdiM8p50"
     })
     return token; // Return the token
   } catch(error){
