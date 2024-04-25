@@ -5,7 +5,7 @@ import { auth } from "../firebase";
 import { generatetoken } from '../firebase';
 import axios from 'axios';
 
-const apiUrl = 'https://push-notify-backend.vercel.app/'
+const apiUrl = 'https://push-notify-backend.vercel.app'
 
 //const apiUrl = 'http://localhost:3001'
  
