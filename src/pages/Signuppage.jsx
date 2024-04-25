@@ -5,9 +5,9 @@ import { auth } from "../firebase";
 import { generatetoken } from '../firebase';
 import axios from 'axios';
 
-const apiUrl = 'https://push-notify-backend.onrender.com'
+//const apiUrl = 'https://push-notify-backend.onrender.com'
 
-//const apiUrl = 'http://localhost:3001'
+const apiUrl = 'http://localhost:3001'
  
 function Signuppage() {
     const [email, setEmail] = useState('');
@@ -35,7 +35,7 @@ function Signuppage() {
         // Create user with email and password
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log('User details are here', user);
+        //console.log('User details are here', user);
 
         const response = await axios.post(`${apiUrl}/users`, {
         email,
