@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-//const apiUrl = 'https://push-notify-backend.onrender.com'
+const apiUrl = 'https://push-notify-backend.vercel.app/'
 
-const apiUrl = "http://localhost:3001";
+//const apiUrl = "http://localhost:3001";
 
 function Loginpage() {
   const [email, setEmail] = useState("");

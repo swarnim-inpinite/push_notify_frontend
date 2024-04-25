@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:3001';
+//const apiUrl = 'http://localhost:3001';
 
-//const apiUrl = 'https://push-notify-backend.onrender.com'
+const apiUrl = 'https://push-notify-backend.vercel.app/'
 
 function CalendarComponent() {
     const [selectedDate, setSelectedDate] = useState(new Date());
